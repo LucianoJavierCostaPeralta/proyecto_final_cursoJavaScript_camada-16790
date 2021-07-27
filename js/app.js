@@ -224,11 +224,60 @@ cargarEgresos();
  *******************************************************************************
 */
 
+/*
+ *******************************************************************************
+ !   Function agregarDato()
+ *******************************************************************************
+*/
+
+// * Function agregarDato() *
+
+let agregarDato = () => {
+
+    let formularioId = document.forms['forma'];
+    let tipoId = formularioId['tipo'];
+    let descripcionId = formularioId['descripcion'];
+    let valorId = formularioId['valor'];
 
 
+    if (descripcionId.value !== '' && valorId.value !== '') {
+        
+        if(tipoId.value === 'ingreso'){
+
+            ingresos.push(
+                new Ingreso(
+                    descripcion.value , Number(valor.value)
+                )
+            );
+
+            cargarHeader();
+            cargarIngresos();
+
+        }
+        else if (tipoId.value === 'egreso') {
+
+            egresos.push(
+                new Egreso(
+                    descripcion.value , Number(valor.value)
+                )
+            );
+
+            cargarHeader();
+            cargarEgresos();
+
+        }
+
+    }
+}
 
 
+// * / Function agregarDato *
 
+/*
+ *******************************************************************************
+ ! /  Function agregarDato()
+ *******************************************************************************
+*/
 
 
 /*

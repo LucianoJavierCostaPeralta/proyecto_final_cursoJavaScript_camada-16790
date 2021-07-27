@@ -13,7 +13,7 @@
   <!--linkCSS-->
   <link rel="stylesheet" href="../css/style.css" />
 
-  <title>Hello, world!</title>
+  <title> Aplicación presupuesto Disponible </title>
 </head>
 
 <body onload="cargarApp()">
@@ -60,15 +60,17 @@
   <!--main-->
   <main class="container row">
 
-    <section class="mt-5 mb-4 col-sm-12 col-md-12 col-lg-12  ">
+    <section class="mt-5 mb-4 col-sm-12 col-md-12 col-lg-12  formulario_bg ">
 
-      <form id='forma' class="form-inline">
+      <h2>Seleccione la operación a realizar</h2>
+
+      <form id='forma' onsubmit="return false ; ">
         <div class="form-row align-items-center">
           <div class="col-auto my-1">
-            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <label class="mr-sm-2 sr-only" for='tipo'>Preference</label>
+            <select class="custom-select mr-sm-2 " id='tipo'>
               <option value='ingreso' selected>Ingreso</option>
-              <option value='Egreso'>Egreso</option>
+              <option value='egreso'>Egreso</option>
 
             </select>
           </div>
@@ -76,16 +78,19 @@
 
           <div class="input-group mb-2 mr-sm-2">
           
-            <input type="text" class="form-control" id="" placeholder="Descripcion">
+            <input type="text" class="form-control " id='descripcion' placeholder="Agregar descripcion"/>
             
           </div>
 
           <div class="input-group mb-2 mr-sm-2">
           
-            <input type="number" class="form-control" id="" placeholder="Valor">
+            <input type="number" class="form-control" id='valor' placeholder="Agregar valor" step="any"/>
             
           </div>
-  
+          
+
+          <button type="button" class="btn btn-outline-secondary" onclick="agregarDato()">Agregar Datos</button>
+
         </div>
 
         

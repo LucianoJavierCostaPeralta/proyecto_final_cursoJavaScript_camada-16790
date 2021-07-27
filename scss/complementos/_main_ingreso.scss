@@ -1,0 +1,40 @@
+.ingreso {
+    width: 375px;
+
+    .ingreso_titulo {
+
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 15px;
+        color: #28B9B5;
+    }
+
+    .elemento_valor {
+
+        color: #28B9B5;
+    }
+
+    .elemento_eliminar--btn{
+        color: #28B9B5;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.elemento:hover .elemento_porcentaje {
+    transform: translateX(-20px);
+}

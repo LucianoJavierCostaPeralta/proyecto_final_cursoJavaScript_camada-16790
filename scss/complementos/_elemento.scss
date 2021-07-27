@@ -1,0 +1,85 @@
+.elemento {
+    padding: 13px;
+    border-bottom: 1px solid #e7e7e7;
+
+    .elemento:first-child {
+        border-top: 2px solid #e7e7e7;
+    }
+
+    .elemento:nth-child(even) {
+        background-color: #f7f7f7;
+    }
+
+    .elemento_descripcion {
+        float: left;
+    }
+
+
+
+    .derecha {
+        float: right;
+
+        .elemento_valor {
+            
+            float: left;
+            transition: transform 0.3s;
+
+
+        }
+
+        .elemento_eliminar {
+            float: left;
+
+
+        }
+
+
+
+    }
+
+
+}
+
+
+.elemento_eliminar--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+    
+
+
+}
+
+.elemento:hover .elemento_valor {
+    transform: translateX(-5px);
+}
+
+.elemento:hover .elemento_eliminar--btn {
+    display: block;
+}
+
+.elemento_eliminar--btn:focus {
+    outline: none;
+}
+
+.elemento_eliminar--btn:active {
+    transform: translateY(2px);
+}
+
+.elemento_porcentaje {
+    float: left;
+    margin-left: 20px;
+    transition: transform 0.3s;
+    font-size: 11px;
+    background-color: #FFDAD9;
+    padding: 3px;
+    border-radius: 3px;
+    width: 45px;
+    text-align: center;
+
+}

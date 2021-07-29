@@ -4,22 +4,23 @@
 // * Variables *
 
 const ingresos = [
-    // new Ingreso(
-    //     "Sueldo", 2100.00
-    // ),
-    // new Ingreso(
-    //     "venta coche", 1500.00
-    //     ) 
+    
+    new Ingreso(
+
+        'Ejemplo Ingreso' , 0 
+        
+    )
+    
 
 ];
 
 const egresos = [
-    // new Egreso(
-    //     "Alquiler departamento", 900
-    //     ),
-    // new Egreso(
-    //     "Ropa", 400
-    //     )
+    
+    new Egreso(
+
+        'Ejemplo Egreso ' , 0 
+
+    )
 ];
 
 // * / Variables *
@@ -80,8 +81,6 @@ const crearIngresoHTML = (ingreso) => {
   </div>
 
     `;
-
-
 
     return ingresoHTML;
 

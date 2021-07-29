@@ -4,14 +4,22 @@
 // * Variables *
 
 const ingresos = [
-    new Ingreso("Sueldo", 2100.00),
-    new Ingreso("venta coche", 1500.00) 
-    
+    // new Ingreso(
+    //     "Sueldo", 2100.00
+    // ),
+    // new Ingreso(
+    //     "venta coche", 1500.00
+    //     ) 
+
 ];
 
 const egresos = [
-    new Egreso("Alquiler departamento", 900),
-    new Egreso("Ropa", 400)
+    // new Egreso(
+    //     "Alquiler departamento", 900
+    //     ),
+    // new Egreso(
+    //     "Ropa", 400
+    //     )
 ];
 
 // * / Variables *
@@ -54,7 +62,9 @@ const formatoPorcentaje = (valor) => valor.toLocaleString('en-US', {
 
 // * Function crearIngresoHTML() *
 const crearIngresoHTML = (ingreso) => {
+     let imprimir = JSON.parse(localStorage.getItem("usuarios"));
 
+    
     let ingresoHTML = `
     <div class="elemento limpiarEstilos">
     <div class="elemento_descripcion">${ingreso.descripcion}</div>
@@ -71,9 +81,11 @@ const crearIngresoHTML = (ingreso) => {
 
     `;
 
+
+
+    return ingresoHTML;
+
     
-    
-    return ingresoHTML ;
 
 }
 // * / Function crearIngresoHTML() *
@@ -135,9 +147,9 @@ const crearEgresoHTML = (egreso) => {
     
     `;
 
-    
-    
-    
+
+
+
 
     return egresoHTML;
 
@@ -153,13 +165,17 @@ const cargarEgresos = () => {
     let egresosHTML = '';
 
     for (let egreso of egresos) {
-        
+
         egresosHTML += crearEgresoHTML(egreso);
     }
 
-    listaEgresosId.innerHTML = egresosHTML ; 
-
+    listaEgresosId.innerHTML = egresosHTML;
     
+   
+    
+
+
+
 
 }
 
@@ -183,29 +199,29 @@ const cargarEgresos = () => {
 
 const eliminarIngreso = (id) => {
 
- let indiceEliminarI = ingresos.findIndex(
-        ingreso => ingreso.id === id 
+    let indiceEliminarI = ingresos.findIndex(
+        ingreso => ingreso.id === id
     );
-ingresos.splice(indiceEliminarI , 1);
+    ingresos.splice(indiceEliminarI, 1);
 
-cargarHeader();
-cargarIngresos();
+    cargarHeader();
+    cargarIngresos();
 
 
-} 
+}
 
 // * / Function eliminarIngreso()*
 
-const eliminarEgreso =  (id) => {
+const eliminarEgreso = (id) => {
 
     let indiceEliminarE = egresos.findIndex(
-        egreso => egreso.id === id 
+        egreso => egreso.id === id
     );
 
-    egresos.splice(indiceEliminarE , 1);
+    egresos.splice(indiceEliminarE, 1);
 
-cargarHeader();
-cargarEgresos();
+    cargarHeader();
+    cargarEgresos();
 
 }
 
@@ -240,26 +256,38 @@ let agregarDato = () => {
     let valorId = formularioId['valor'];
 
 
+
     if (descripcionId.value !== '' && valorId.value !== '') {
-        
-        if(tipoId.value === 'ingreso'){
+
+        if (tipoId.value === 'ingreso') {
 
             ingresos.push(
                 new Ingreso(
-                    descripcion.value , Number(valor.value)
+                    descripcion.value, Number(valor.value)
                 )
+            );
+
+            localStorage.setItem(
+
+                "ingreso", JSON.stringify(ingresos)
+
             );
 
             cargarHeader();
             cargarIngresos();
 
-        }
-        else if (tipoId.value === 'egreso') {
+        } else if (tipoId.value === 'egreso') {
 
             egresos.push(
                 new Egreso(
-                    descripcion.value , Number(valor.value)
+                    descripcion.value, Number(valor.value)
                 )
+            );
+
+            localStorage.setItem(
+
+                "egreso", JSON.stringify(egresos)
+
             );
 
             cargarHeader();

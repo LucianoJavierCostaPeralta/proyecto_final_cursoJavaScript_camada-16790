@@ -1,19 +1,17 @@
 // * Clase hija , de la clase padre "Dato" *
 class Ingreso extends Dato {
 
-    // !Atributo static
-    static contadorIngresos = 0 ;
+   
 
     // * Metodo Constructor *
-    constructor (descripcion , valor ){
+    constructor (descripcion , valor  , id ){
 
         // ! Atributos
-        super(descripcion , valor);
-        this._id = ++Ingreso.contadorIngresos;
+        super(descripcion , valor , id );
+        
+        
     } 
 
     // * Metodo geter del atributo id *
-    get id(){
-        return this._id ; 
-    }
+    
 }

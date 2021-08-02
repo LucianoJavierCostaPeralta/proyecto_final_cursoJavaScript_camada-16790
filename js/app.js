@@ -1,29 +1,11 @@
-/*
- * Clase Ejecutable * 
- */
+
+// *Clase Ejecutable *
+
+
 // * Variables *
+let ingresos = [] , egresos = [] ; 
 
-const ingresos = [
-    
-    new Ingreso(
-
-        'Ejemplo Ingreso' , 0 
-        
-    )
-    
-
-];
-
-const egresos = [
-    
-    new Egreso(
-
-        'Ejemplo Egreso ' , 0 
-
-    )
-];
-
-// * / Variables *
+// * / Variables 
 
 // * Functions *
 /*
@@ -63,18 +45,17 @@ const formatoPorcentaje = (valor) => valor.toLocaleString('en-US', {
 
 // * Function crearIngresoHTML() *
 const crearIngresoHTML = (ingreso) => {
-     let imprimir = JSON.parse(localStorage.getItem("usuarios"));
 
-    
+
     let ingresoHTML = `
     <div class="elemento limpiarEstilos">
-    <div class="elemento_descripcion">${ingreso.descripcion}</div>
+    <div class="elemento_descripcion">${ingreso._descripcion}</div>
 
     <div class="derecha limpiarEstilos">
-      <div class="elemento_valor">+ ${formatoMoneda(ingreso.valor)}</div>
+      <div class="elemento_valor">+ ${formatoMoneda(ingreso._valor)}</div>
       <div class="elemento_eliminar">
         <button class="elemento_eliminar--btn">
-          <ion-icon name="close-circle-outline" onclick='eliminarIngreso(${ingreso.id})' ></ion-icon>
+          <ion-icon name="close-circle-outline" onclick='eliminarIngreso(${ingreso._id})' ></ion-icon>
         </button>
       </div>
     </div>
@@ -84,7 +65,7 @@ const crearIngresoHTML = (ingreso) => {
 
     return ingresoHTML;
 
-    
+
 
 }
 // * / Function crearIngresoHTML() *
@@ -94,15 +75,30 @@ const crearIngresoHTML = (ingreso) => {
 // * Function cargarIngresos() *
 const cargarIngresos = () => {
 
+    
+   
+    let imprimirIngresos = [];
+    if (localStorage.getItem("ingreso") != null ) {
+        
+        imprimirIngresos = JSON.parse(localStorage.getItem("ingreso"));
+    }
+    
+    
     const listaIngresosId = document.getElementById('lista-ingresos');
     let ingresosHTML = '';
+    
 
-    for (let ingreso of ingresos) {
 
-        ingresosHTML += crearIngresoHTML(ingreso);
-    }
+    imprimirIngresos.forEach((element) => {
+        
+        ingresosHTML += crearIngresoHTML(element);
+      });
+
 
     listaIngresosId.innerHTML = ingresosHTML;
+
+
+
 }
 // * / Function cargarIngresos() *
 
@@ -126,17 +122,17 @@ const crearEgresoHTML = (egreso) => {
 
     <div class="elemneto limpiarEstilos ">
     <div class="elemento limpiarEstilos">
-      <div class="elemento_descripcion">${egreso.descripcion}</div>
+      <div class="elemento_descripcion">${egreso._descripcion}</div>
 
       <div class="derecha limpiarEstilos">
-        <div class="elemento_valor">- ${formatoMoneda(egreso.valor)}</div>
+        <div class="elemento_valor">- ${formatoMoneda(egreso._valor)}</div>
 
-        <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor/totalEgresos())}</div>
+        <div class="elemento_porcentaje">${formatoPorcentaje(egreso._valor/totalEgresos())}</div>
 
         <div class="elemento_eliminar">
           <div class="elemento_eliminar--btn">
             <ion-icon name="close-circle-outline"
-            onclick='eliminarEgreso(${egreso.id})'></ion-icon>
+            onclick='eliminarEgreso(${egreso._id})'></ion-icon>
           </div>
         </div>
       </div>
@@ -159,21 +155,26 @@ const crearEgresoHTML = (egreso) => {
 // * Function cargarEgresos()*
 
 const cargarEgresos = () => {
-
+    let imprimirEgresos = [];
+    if (localStorage.getItem("egreso") != null ) {
+        
+        imprimirEgresos = JSON.parse(localStorage.getItem("egreso"));
+    }
     const listaEgresosId = document.getElementById('lista-egresos');
     let egresosHTML = '';
-
-    for (let egreso of egresos) {
-
-        egresosHTML += crearEgresoHTML(egreso);
-    }
-
-    listaEgresosId.innerHTML = egresosHTML;
     
+    
+  
    
     
 
+    
+    imprimirEgresos.forEach((element) => {
+        
+        egresosHTML += crearEgresoHTML(element);
+      });
 
+    listaEgresosId.innerHTML = egresosHTML;
 
 
 }
@@ -197,28 +198,27 @@ const cargarEgresos = () => {
 // * Function eliminarIngreso()*
 
 const eliminarIngreso = (id) => {
-
-    let indiceEliminarI = ingresos.findIndex(
-        ingreso => ingreso.id === id
-    );
-    ingresos.splice(indiceEliminarI, 1);
-
+    let borrar = JSON.parse(localStorage.getItem("ingreso"))
+    let actualizo = borrar.filter(e => e._id != id)
+    localStorage.setItem("ingreso", JSON.stringify(actualizo))
+    
+    
     cargarHeader();
     cargarIngresos();
-
-
+    
+    
+   
 }
 
 // * / Function eliminarIngreso()*
 
 const eliminarEgreso = (id) => {
 
-    let indiceEliminarE = egresos.findIndex(
-        egreso => egreso.id === id
-    );
-
-    egresos.splice(indiceEliminarE, 1);
-
+    let borrar = JSON.parse(localStorage.getItem("egreso"))
+    let actualizo = borrar.filter(e => e._id != id)
+    localStorage.setItem("egreso", JSON.stringify(actualizo))
+    
+    
     cargarHeader();
     cargarEgresos();
 
@@ -253,48 +253,53 @@ let agregarDato = () => {
     let tipoId = formularioId['tipo'];
     let descripcionId = formularioId['descripcion'];
     let valorId = formularioId['valor'];
+    let paso1 = JSON.parse(localStorage.getItem("ingreso"))
+    let paso2 = JSON.parse(localStorage.getItem("egreso"))
 
+    if (tipoId.value === "ingreso") {
+        if (localStorage.getItem("ingreso") != null) {
+            let index = paso1.length + 1
+            let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
+            paso1.push(ingreso)
+            localStorage.setItem("ingreso", JSON.stringify(paso1))
+           
+        } else {
+            // localStorage.clear()
+            let index = 1
+            let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
+            ingresos.push(ingreso)
+            localStorage.setItem("ingreso", JSON.stringify(ingresos))
+        }
 
-
-    if (descripcionId.value !== '' && valorId.value !== '') {
-
-        if (tipoId.value === 'ingreso') {
-
-            ingresos.push(
-                new Ingreso(
-                    descripcion.value, Number(valor.value)
-                )
-            );
-
-            localStorage.setItem(
-
-                "ingreso", JSON.stringify(ingresos)
-
-            );
-
-            cargarHeader();
-            cargarIngresos();
-
-        } else if (tipoId.value === 'egreso') {
-
-            egresos.push(
-                new Egreso(
-                    descripcion.value, Number(valor.value)
-                )
-            );
-
-            localStorage.setItem(
-
-                "egreso", JSON.stringify(egresos)
-
-            );
-
-            cargarHeader();
-            cargarEgresos();
-
+    }else {
+        if (localStorage.getItem("egreso") != null) {
+            let index = paso2.length + 1
+            let egreso = new Egreso(descripcionId.value, valorId.value , index)
+            paso2.push(egreso)
+            localStorage.setItem("egreso", JSON.stringify(paso2))
+           
+        } else {
+            // localStorage.clear()
+            let index = 1
+            let egreso = new Egreso(descripcionId.value, valorId.value , index)
+            egresos.push(egreso)
+            localStorage.setItem("egreso", JSON.stringify(egresos))
         }
 
     }
+
+    //logica condicional
+    
+
+    // * Egreso localStorage *
+    
+    cargarHeader();
+    cargarIngresos();   
+    cargarEgresos();
+   
+    
+
+
 }
 
 
@@ -315,10 +320,21 @@ let agregarDato = () => {
 
 // * Function totalIngresos() *
 let totalIngresos = () => {
+    if(localStorage.getItem("ingreso") != null){
+        ingresos = 
+            JSON.parse(
+                localStorage.getItem(
+                    "ingreso"
+                )
+            );
+        
+
+        
+    }
     let totalIngreso = 0;
 
     for (let ingreso of ingresos) {
-        totalIngreso += ingreso.valor;
+        totalIngreso += ingreso._valor;
     }
 
     return totalIngreso;
@@ -329,11 +345,25 @@ let totalIngresos = () => {
 
 // * function totalEgresos() * 
 let totalEgresos = () => {
+    if(localStorage.getItem("egreso") != null){
+        egresos = 
+            JSON.parse(
+                localStorage.getItem(
+                    "egreso"
+                )
+            );
+        
+
+        
+    }
+
+
+
     let totalEgreso = 0;
 
     for (let egreso of egresos) {
 
-        totalEgreso += egreso.valor;
+        totalEgreso += egreso._valor;
     }
 
     return totalEgreso;
@@ -361,12 +391,15 @@ let cargarHeader = () => {
     const ingresosId = document.getElementById('ingresos');
     const egresosId = document.getElementById('egresos');
     const porcentajeId = document.getElementById('porcentaje');
-
+    let porcentajeEgreso = 0 ; 
+    let presupuesto = totalIngresos() - totalEgresos();
     /*
      ! Realizamos los calculos para obtener  el presupuesto y porcentaje actual 
     */
-    let presupuesto = totalIngresos() - totalEgresos();
-    let porcentajeEgreso = totalEgresos() / totalIngresos();
+    if (totalIngresos() != 0 && totalEgresos() != 0 ) {
+        
+        porcentajeEgreso = totalEgresos() / totalIngresos();
+    }
 
     /*
      * Con la propiedad innerHTML , imprimimos los datos en html *
@@ -400,3 +433,5 @@ let cargarApp = () => {
 // * / cargarApp() *
 
 // * / Functions *
+
+

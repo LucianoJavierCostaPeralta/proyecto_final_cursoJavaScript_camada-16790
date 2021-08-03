@@ -7,6 +7,10 @@ let ingresos = [] , egresos = [] ;
 
 // * / Variables 
 
+// * Selectores * 
+
+// * / Selectores *
+
 // * Functions *
 /*
  *******************************************************************************
@@ -76,7 +80,7 @@ const crearIngresoHTML = (ingreso) => {
 const cargarIngresos = () => {
 
     
-   
+    
     let imprimirIngresos = [];
     if (localStorage.getItem("ingreso") != null ) {
         
@@ -92,6 +96,8 @@ const cargarIngresos = () => {
     imprimirIngresos.forEach((element) => {
         
         ingresosHTML += crearIngresoHTML(element);
+
+
       });
 
 
@@ -255,6 +261,8 @@ let agregarDato = () => {
     let valorId = formularioId['valor'];
     let paso1 = JSON.parse(localStorage.getItem("ingreso"))
     let paso2 = JSON.parse(localStorage.getItem("egreso"))
+
+
 
     if (tipoId.value === "ingreso") {
         if (localStorage.getItem("ingreso") != null) {
@@ -434,4 +442,5 @@ let cargarApp = () => {
 
 // * / Functions *
 
+// *Eventos *
 

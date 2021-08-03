@@ -145,7 +145,7 @@ const crearEgresoHTML = (egreso) => {
     </div>
   </div>
     
-    
+   
     `;
 
 

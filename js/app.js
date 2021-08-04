@@ -50,7 +50,6 @@ const formatoPorcentaje = (valor) => valor.toLocaleString('en-US', {
 // * Function crearIngresoHTML() *
 const crearIngresoHTML = (ingreso) => {
 
-
     let ingresoHTML = `
     <div class="elemento limpiarEstilos">
     <div class="elemento_descripcion">${ingreso._descripcion}</div>
@@ -69,7 +68,33 @@ const crearIngresoHTML = (ingreso) => {
 
     return ingresoHTML;
 
+//creacion de divs
 
+// let divPadre = document.createElement("div");
+// divPadre.setAttribute("class", "elemento limpiarEstilos");
+// let divDescripcion = document.createElement("div");
+// divDescripcion.setAttribute("class", "elemento_descripcion");
+// divDescripcion.textContent = ingreso._descripcion;
+// let divDerecha = document.createElement("div");
+// divDerecha.setAttribute("class", "derecha limpiarEstilos");
+// let divElementoValor = document.createElement("div");
+// divElementoValor.setAttribute("class", "elemento_valor");
+// divElementoValor.textContent = formatoMoneda(ingreso._valor);
+// let divElementoEliminar = document.createElement("div");
+// divElementoEliminar.setAttribute("class", "elemento_eliminar");
+// let botonEliminar = document.createElement("button");
+// botonEliminar.setAttribute("class", "elemento_eliminar--btn");
+// let icon = document.createElement("ion-icon");
+// icon.setAttribute("name", "close-circle-outline");
+// icon.setAttribute("click", eliminarIngreso(ingreso._id));
+// //appends
+// divPadre.appendChild(divDescripcion);
+// divPadre.appendChild(divDerecha);
+// divDerecha.appendChild(divElementoValor);
+// divDerecha.appendChild(divElementoEliminar);
+// divElementoEliminar.appendChild(botonEliminar);
+// botonEliminar.appendChild(icon);
+// return divPadre;
 
 }
 // * / Function crearIngresoHTML() *

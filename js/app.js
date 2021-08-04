@@ -263,42 +263,44 @@ let agregarDato = () => {
     let paso2 = JSON.parse(localStorage.getItem("egreso"))
 
 
+    if(descripcionId.value != '' && valor.value != '' ) {
 
-    if (tipoId.value === "ingreso") {
-        if (localStorage.getItem("ingreso") != null) {
-            let index = paso1.length + 1
-            let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
-            paso1.push(ingreso)
-            localStorage.setItem("ingreso", JSON.stringify(paso1))
-           
-        } else {
-            // localStorage.clear()
-            let index = 1
-            let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
-            ingresos.push(ingreso)
-            localStorage.setItem("ingreso", JSON.stringify(ingresos))
+        if (tipoId.value === "ingreso") {
+            if (localStorage.getItem("ingreso") != null) {
+                let index = paso1.length + 1
+                let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
+                paso1.push(ingreso)
+                localStorage.setItem("ingreso", JSON.stringify(paso1))
+               
+            } else {
+                // localStorage.clear()
+                let index = 1
+                let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
+                ingresos.push(ingreso)
+                localStorage.setItem("ingreso", JSON.stringify(ingresos))
+            }
+    
+        }else {
+            if (localStorage.getItem("egreso") != null) {
+                let index = paso2.length + 1
+                let egreso = new Egreso(descripcionId.value, valorId.value , index)
+                paso2.push(egreso)
+                localStorage.setItem("egreso", JSON.stringify(paso2))
+               
+            } else {
+                // localStorage.clear()
+                let index = 1
+                let egreso = new Egreso(descripcionId.value, valorId.value , index)
+                egresos.push(egreso)
+                localStorage.setItem("egreso", JSON.stringify(egresos))
+            }
+    
         }
-
-    }else {
-        if (localStorage.getItem("egreso") != null) {
-            let index = paso2.length + 1
-            let egreso = new Egreso(descripcionId.value, valorId.value , index)
-            paso2.push(egreso)
-            localStorage.setItem("egreso", JSON.stringify(paso2))
-           
-        } else {
-            // localStorage.clear()
-            let index = 1
-            let egreso = new Egreso(descripcionId.value, valorId.value , index)
-            egresos.push(egreso)
-            localStorage.setItem("egreso", JSON.stringify(egresos))
-        }
-
     }
+
 
     //logica condicional
     
-
     // * Egreso localStorage *
     
     cargarHeader();

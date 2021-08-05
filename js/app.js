@@ -79,14 +79,14 @@ const crearIngresoHTML = (ingreso) => {
 // divDerecha.setAttribute("class", "derecha limpiarEstilos");
 // let divElementoValor = document.createElement("div");
 // divElementoValor.setAttribute("class", "elemento_valor");
-// divElementoValor.textContent = formatoMoneda(ingreso._valor);
+// divElementoValor.textContent = `${formatoMoneda(ingreso._valor)}`;
 // let divElementoEliminar = document.createElement("div");
 // divElementoEliminar.setAttribute("class", "elemento_eliminar");
 // let botonEliminar = document.createElement("button");
 // botonEliminar.setAttribute("class", "elemento_eliminar--btn");
 // let icon = document.createElement("ion-icon");
 // icon.setAttribute("name", "close-circle-outline");
-// icon.setAttribute("click", eliminarIngreso(ingreso._id));
+// icon.setAttribute("onclick",`${eliminarIngreso(ingreso._id)}`);
 // //appends
 // divPadre.appendChild(divDescripcion);
 // divPadre.appendChild(divDerecha);
@@ -94,6 +94,7 @@ const crearIngresoHTML = (ingreso) => {
 // divDerecha.appendChild(divElementoEliminar);
 // divElementoEliminar.appendChild(botonEliminar);
 // botonEliminar.appendChild(icon);
+
 // return divPadre;
 
 }
@@ -121,7 +122,8 @@ const cargarIngresos = () => {
     imprimirIngresos.forEach((element) => {
         
         ingresosHTML += crearIngresoHTML(element);
-
+        
+        // listaIngresosId.appendChild( crearIngresoHTML(element ))
 
       });
 
@@ -299,6 +301,8 @@ let agregarDato = () => {
                
             } else {
                 // localStorage.clear()
+                
+                
                 let index = 1
                 let ingreso = new Ingreso(descripcionId.value, valorId.value , index)
                 ingresos.push(ingreso)

@@ -3,7 +3,12 @@
 
 
 // * Variables *
-let ingresos = [] , egresos = [] ; 
+let ingresos = [] , egresos = [] ;
+
+let agregarDatoId = document.getElementById('agregarDatoId');
+
+
+
 
 // * / Variables 
 
@@ -68,7 +73,7 @@ const crearIngresoHTML = (ingreso) => {
 
     return ingresoHTML;
 
-//creacion de divs
+// creacion de divs
 
 // let divPadre = document.createElement("div");
 // divPadre.setAttribute("class", "elemento limpiarEstilos");
@@ -94,6 +99,8 @@ const crearIngresoHTML = (ingreso) => {
 // divDerecha.appendChild(divElementoEliminar);
 // divElementoEliminar.appendChild(botonEliminar);
 // botonEliminar.appendChild(icon);
+
+// console.log(divPadre);
 
 // return divPadre;
 
@@ -130,7 +137,7 @@ const cargarIngresos = () => {
 
     listaIngresosId.innerHTML = ingresosHTML;
 
-
+    
 
 }
 // * / Function cargarIngresos() *
@@ -289,7 +296,7 @@ let agregarDato = () => {
     let paso1 = JSON.parse(localStorage.getItem("ingreso"))
     let paso2 = JSON.parse(localStorage.getItem("egreso"))
 
-
+    
     if(descripcionId.value != '' && valor.value != '' ) {
 
         if (tipoId.value === "ingreso") {
@@ -474,4 +481,6 @@ let cargarApp = () => {
 // * / Functions *
 
 // *Eventos *
+window.onload = cargarApp() ; 
+agregarDatoId.addEventListener("click", agregarDato);
 

@@ -16,14 +16,17 @@
   <title>Aplicación presupuesto Disponible</title>
 </head>
 
-<body onload="cargarApp()">
+<body >
   <!--
 ---------------------------------------------------------------------------------->
   <!--header-->
   <header class="header">
+
+      
+
     <div class="presupuesto container-fluid row m-auto">
       <!--
----------------------------------------------------------------------------------->
+---------------------------------------------------------------------------------->  
       <div class="col-12">
         <h1 class="presupuesto_titulo">Presupuesto Disponible</h1>
 
@@ -63,7 +66,10 @@
       </div>
       <!--/ Presupuesto Egreso-->
       <!--
----------------------------------------------------------------------------------->
+----------------------------------------------------------------------------------> 
+
+        
+
     </div>
   </header>
   <!--/header-->
@@ -109,19 +115,25 @@
           <!--/input Valor-->
 
           <!--Button-->
-          <button type="button" class="btn btn-outline-secondary" onclick="agregarDato()">
+          <button type="button" class="btn btn-outline-secondary"  id='agregarDatoId'>
             Agregar Datos
           </button>
           <!--/Button-->
         </div>
         <!--/formContainer-->
       </form>
+
+      
+
       <!--/form-->
     </section>
     <!--/Formulario-->
 
     <!--
 ---------------------------------------------------------------------------------->
+    
+
+    
 
     <!--ingreso-->
     <section class="ingreso mt-5 mb-4 col-sm-12 col-md-12 col-lg-6">
@@ -152,8 +164,15 @@
   <!--Footer-->
   <footer class="bg-dark text-white ">
     <div class="container">
-      <div class="row text-center m-auto ">
-        <div class="col-12 p-1">@ By Luciano Javier Costa Peralta</div>
+      <div class="row text-center m-auto">
+        <div class="col-sm-12 col-md-6 col-lg-6 p-2">@ By Luciano Javier Costa Peralta</div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 p-2">
+          <button type="button" class="btn btn-outline-secondary" >
+            Dark Mode
+          </button>
+        </div>
+
       </div>
     </div>
   </footer>
@@ -200,10 +219,12 @@
 
   
   <!--Script Propio-->
-  <script src="../js/Dato.js"></script>
-  <script src="../js/Ingreso.js"></script>
-  <script src="../js/Egreso.js"></script>
-  <script src="../js/app.js"></script>
+  <script src="./js/darMode.js"></script>
+  <script src="./js/Dato.js"></script>
+  <script src="./js/Ingreso.js"></script>
+  <script src="./js/Egreso.js"></script>
+  <script src="./js/app.js"></script>
+  
   <!--/Script Propio-->
 
  <!--

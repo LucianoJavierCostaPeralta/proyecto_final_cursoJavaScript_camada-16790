@@ -465,7 +465,8 @@ let cargarHeader = () => {
 
 // *Function cargarAPP() *
 let cargarApp = () => {
-
+    
+    
     // ! Llamamos a la function cargarHeader()   
     cargarHeader();
 
@@ -483,4 +484,4 @@ let cargarApp = () => {
 // *Eventos *
 window.onload = cargarApp() ; 
 agregarDatoId.addEventListener("click", agregarDato);
-
+// */ Eventos*

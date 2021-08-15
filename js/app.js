@@ -7,6 +7,8 @@ let ingresos = [],
 
 // * Selectores *
 let agregarDatoId = document.getElementById("agregarDatoId");
+
+
 // * / Selectores *
 
 // * Functions *
@@ -357,9 +359,59 @@ let cargarApp = () => {
 };
 // * / cargarApp() *
 
+// *Funcion consumirApi()*
+
+const consumirApi = async () => {
+
+    const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
+
+    const rest = await fetch(url);
+
+    return rest.json();  
+
+}
+
+consumirApi().then(res => {
+    
+    const dolarBlue = res.find(dolar => dolar.casa.nombre == "Dolar Blue");
+
+    console.log(res[1]);
+
+    console.log(dolarBlue);
+
+
+    $("#dolar").append(`ARS $ ${formatoMoneda(dolarBlue.casa.venta)}`);
+
+
+}).catch(err => console.error(err));
+
+// * / function consumirApi()*
+
+
+
+
 // * / Functions *
 
 // *Eventos *
 window.onload = cargarApp();
 agregarDatoId.addEventListener("click", agregarDato);
 // */ Eventos*
+
+
+// *Logica*
+
+// Consumiendo una api
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+// */ Logica*

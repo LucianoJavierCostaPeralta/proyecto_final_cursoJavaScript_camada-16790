@@ -3,6 +3,8 @@ const darkMode = () => {
   $("body").css("background-color", "#000");
   $("main").css("background-color", "#000");
   $("h2.tituloP").css("color", "#fff");
+  $("h5").css("color", "#fff");
+  $("#dolar").css("color", "#fff");
   $(".formulario_bg ").css("background-color", "#333");
   $(".formulario_bg ").css("border", "1px solid #fff");
   $(".formulario_bg ").css("border-radius", "1px");
@@ -26,6 +28,8 @@ const ligthMode = () => {
   $("body").css("background-color", "#fff");
   $("main").css("background-color", "#fff");
   $("h2.tituloP").css("color", "#000");
+  $("h5").css("color", "#000");
+  $("#dolar").css("color", "#000");
   $(".formulario_bg ").css("background-color", "#f7f7f7");
   $(".formulario_bg ").css("border", "1px solid transparent");
   $(".formulario_bg ").css("border-radius", "1px");

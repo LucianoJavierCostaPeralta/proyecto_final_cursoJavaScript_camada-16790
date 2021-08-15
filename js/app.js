@@ -375,12 +375,10 @@ consumirApi().then(res => {
     
     const dolarBlue = res.find(dolar => dolar.casa.nombre == "Dolar Blue");
 
-    console.log(res[1]);
-
-    console.log(dolarBlue);
+    
 
 
-    $("#dolar").append(`ARS $ ${formatoMoneda(dolarBlue.casa.venta)}`);
+    $("#dolar").append(`ARS $ ${dolarBlue.casa.venta}`);
 
 
 }).catch(err => console.error(err));
